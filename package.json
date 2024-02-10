@@ -1,14 +1,18 @@
 {
   "name": "fuxiaochen-api",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "用作 fuxiaochen.com 的 api",
   "main": "./src/app.js",
   "scripts": {
     "dev": "nodemon --config nodemon.json"
   },
-  "keywords": [],
+  "keywords": [
+    "fuxiaochen",
+    "express",
+    "mongodb"
+  ],
   "author": "fuxiaochen",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "express": "^4.18.2",
     "morgan": "^1.10.0"
