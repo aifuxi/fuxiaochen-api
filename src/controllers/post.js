@@ -1,4 +1,4 @@
-/** @type {import('express').RequestHandler} */
+/** @type {import('express').IRouterHandler} */
 exports.getPosts = (req, resp) => {
   resp.json({
     code: 0,
@@ -6,7 +6,7 @@ exports.getPosts = (req, resp) => {
   })
 }
 
-/** @type {import('express').RequestHandler} */
+/** @type {import('express').IRouterHandler} */
 exports.createPost = (req, resp) => {
   resp.json({
     code: 0,
@@ -14,7 +14,7 @@ exports.createPost = (req, resp) => {
   })
 }
 
-/** @type {import('express').RequestHandler} */
+/** @type {import('express').IRouterHandler} */
 exports.updatePost = (req, resp) => {
   resp.json({
     code: 0,
@@ -22,7 +22,7 @@ exports.updatePost = (req, resp) => {
   })
 }
 
-/** @type {import('express').RequestHandler} */
+/** @type {import('express').IRouterHandler} */
 exports.deletePost = (req, resp) => {
   resp.json({
     code: 0,
