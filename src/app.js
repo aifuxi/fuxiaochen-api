@@ -10,7 +10,15 @@ async function main() {
   // 解析json body中间件
   app.use(express.json())
 
-  app.use("/api/v1", postRouter)
+  app.use("/admin-api/v1", postRouter)
+
+  // 兜底路由
+  app.all("*", (req, resp) => {
+    resp.json({
+      code: 1,
+      msg: `路径: ${req.originalUrl} 未找到`,
+    })
+  })
 
   const PORT = 6121
 

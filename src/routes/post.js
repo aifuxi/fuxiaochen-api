@@ -9,7 +9,7 @@ postRouter
 
 postRouter
   .route("/posts/:id")
-  .put(postController.updatePost)
+  .patch(postController.updatePost)
   .delete(postController.deletePost)
 
 module.exports = postRouter
