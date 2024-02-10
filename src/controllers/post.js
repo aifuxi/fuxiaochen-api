@@ -1,5 +1,17 @@
+const catchAsync = require("../utils/ catchAsync")
+const AppError = require("../utils/appError")
+
 /** @type {import('express').IRouterHandler} */
-exports.getPosts = (req, resp) => {
+const getPosts = async (req, resp, next) => {
+  const p = new Promise((resolve) => {
+    setTimeout(() => {
+      resolve()
+    }, 1000)
+  })
+  await p
+
+  return next(new AppError(6666, "我是测试"))
+
   resp.json({
     code: 0,
     msg: "get posts",
@@ -7,7 +19,7 @@ exports.getPosts = (req, resp) => {
 }
 
 /** @type {import('express').IRouterHandler} */
-exports.createPost = (req, resp) => {
+const createPost = (req, resp) => {
   resp.json({
     code: 0,
     msg: "create posts",
@@ -15,7 +27,7 @@ exports.createPost = (req, resp) => {
 }
 
 /** @type {import('express').IRouterHandler} */
-exports.updatePost = (req, resp) => {
+const updatePost = (req, resp) => {
   resp.json({
     code: 0,
     msg: "update posts",
@@ -23,9 +35,16 @@ exports.updatePost = (req, resp) => {
 }
 
 /** @type {import('express').IRouterHandler} */
-exports.deletePost = (req, resp) => {
+const deletePost = (req, resp) => {
   resp.json({
     code: 0,
     msg: "delete posts",
   })
+}
+
+module.exports = {
+  getPosts: catchAsync(getPosts),
+  createPost: catchAsync(getPosts),
+  updatePost: catchAsync(updatePost),
+  deletePost: catchAsync(deletePost),
 }

@@ -1,6 +1,9 @@
 const express = require("express")
 const morgan = require("morgan")
 const postRouter = require("./routes/post")
+const AppError = require("./utils/appError")
+const { globalErrorHandler, notFoundHandler } = require("./controllers/error")
+
 const app = express()
 
 const PORT = 6121
@@ -15,12 +18,10 @@ async function main() {
   app.use("/admin-api/v1", postRouter)
 
   // 兜底路由
-  app.all("*", (req, resp) => {
-    resp.json({
-      code: 1,
-      msg: `路径: ${req.originalUrl} 未找到`,
-    })
-  })
+  app.all("*", notFoundHandler)
+
+  // 全局错误处理中间件
+  app.use(globalErrorHandler)
 
   app.listen(PORT, () => {
     console.log(`服务已启动: http://127.0.0.1:${PORT}`)
