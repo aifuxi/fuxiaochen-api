@@ -4,7 +4,6 @@ const mongoose = require("mongoose")
 
 const postRouter = require("./routes/post")
 const userRouter = require("./routes/user")
-const AppError = require("./utils/app_error")
 const { globalErrorHandler, notFoundHandler } = require("./controllers/error")
 
 const app = express()

@@ -1,16 +1,6 @@
 const catchAsync = require("../utils/catch_async")
-const AppError = require("../utils/app_error")
 
-const getPosts = async (req, resp, next) => {
-  const p = new Promise((resolve) => {
-    setTimeout(() => {
-      resolve()
-    }, 1000)
-  })
-  await p
-
-  return next(new AppError(6666, "我是测试"))
-
+const getPosts = async (req, resp) => {
   resp.json({
     code: 0,
     msg: "get posts",

@@ -1,10 +1,9 @@
 const catchAsync = require("../utils/catch_async")
-const AppError = require("../utils/app_error")
 const User = require("../models/user")
 const createResp = require("../utils/create_resp")
 
 /** @type {import('express').IRouterHandler} */
-const getUsers = async (req, resp, next) => {
+const getUsers = async (req, resp) => {
   const limit = Number(req.limit) || 10
   const skip = Number(req.query) - 1 * limit
 
@@ -15,7 +14,7 @@ const getUsers = async (req, resp, next) => {
 }
 
 /** @type {import('express').IRouterHandler} */
-const createUser = async (req, res, next) => {
+const createUser = async (req, res) => {
   const { username, password } = req.body
 
   const user = await User.create({
