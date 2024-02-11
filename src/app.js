@@ -1,21 +1,29 @@
 const express = require("express")
 const morgan = require("morgan")
+const mongoose = require("mongoose")
+
 const postRouter = require("./routes/post")
+const userRouter = require("./routes/user")
 const AppError = require("./utils/appError")
 const { globalErrorHandler, notFoundHandler } = require("./controllers/error")
 
 const app = express()
 
-const PORT = 6121
+const PORT = 6122
+const ADMIN_API_V1 = "/admin-api/v1"
 
 async function main() {
+  // 连接 MongoDB
+  await mongoose.connect("mongodb://127.0.0.1:27017/fuxiaochen-api")
+
   // 请求日志中间件
   app.use(morgan("dev"))
 
   // 解析json body中间件
   app.use(express.json())
 
-  app.use("/admin-api/v1", postRouter)
+  app.use(`${ADMIN_API_V1}/posts`, postRouter)
+  app.use(`${ADMIN_API_V1}/users`, userRouter)
 
   // 兜底路由
   app.all("*", notFoundHandler)

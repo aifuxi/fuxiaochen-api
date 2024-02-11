@@ -44,7 +44,7 @@ const deletePost = (req, resp) => {
 
 module.exports = {
   getPosts: catchAsync(getPosts),
-  createPost: catchAsync(getPosts),
+  createPost: catchAsync(createPost),
   updatePost: catchAsync(updatePost),
   deletePost: catchAsync(deletePost),
 }
