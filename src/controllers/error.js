@@ -1,9 +1,10 @@
-const AppError = require("../utils/appError")
+const AppError = require("../utils/app_error")
 
 exports.globalErrorHandler = (err, req, resp, next) => {
   resp.json({
     code: err.code || 5000,
     msg: err.message || "服务器内部错误",
+    err: err,
     stack: err.stack,
   })
 }

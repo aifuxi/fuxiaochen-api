@@ -1,9 +1,9 @@
 const jwt = require("jsonwebtoken")
 
 const User = require("../models/user")
-const catchAsync = require("../utils/ catchAsync")
-const AppError = require("../utils/appError")
-const createResp = require("../utils/createResp")
+const catchAsync = require("../utils/catch_async")
+const AppError = require("../utils/app_error")
+const createResp = require("../utils/create_resp")
 
 const login = async (req, res, next) => {
   const { username, password } = req.body

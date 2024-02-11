@@ -1,7 +1,7 @@
-const catchAsync = require("../utils/ catchAsync")
-const AppError = require("../utils/appError")
+const catchAsync = require("../utils/catch_async")
+const AppError = require("../utils/app_error")
 const User = require("../models/user")
-const createResp = require("../utils/createResp")
+const createResp = require("../utils/create_resp")
 
 /** @type {import('express').IRouterHandler} */
 const getUsers = async (req, resp, next) => {
