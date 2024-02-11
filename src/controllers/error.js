@@ -10,5 +10,5 @@ exports.globalErrorHandler = (err, req, resp, next) => {
 }
 
 exports.notFoundHandler = (req, resp, next) => {
-  next(new AppError(4004, `路径: ${req.originalUrl} 未找到`))
+  return next(new AppError(4004, `路径: ${req.originalUrl} 未找到`))
 }

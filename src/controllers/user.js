@@ -5,10 +5,13 @@ const createResp = require("../utils/create_resp")
 
 /** @type {import('express').IRouterHandler} */
 const getUsers = async (req, resp, next) => {
-  resp.json({
-    code: 0,
-    msg: "get users",
-  })
+  const limit = Number(req.limit) || 10
+  const skip = Number(req.query) - 1 * limit
+
+  console.log(req.query)
+  const users = await User.find().skip(skip).limit(limit)
+
+  resp.json(createResp({ users }))
 }
 
 /** @type {import('express').IRouterHandler} */

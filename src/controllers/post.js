@@ -1,7 +1,6 @@
 const catchAsync = require("../utils/catch_async")
 const AppError = require("../utils/app_error")
 
-/** @type {import('express').IRouterHandler} */
 const getPosts = async (req, resp, next) => {
   const p = new Promise((resolve) => {
     setTimeout(() => {
@@ -18,7 +17,6 @@ const getPosts = async (req, resp, next) => {
   })
 }
 
-/** @type {import('express').IRouterHandler} */
 const createPost = (req, resp) => {
   resp.json({
     code: 0,
@@ -26,7 +24,6 @@ const createPost = (req, resp) => {
   })
 }
 
-/** @type {import('express').IRouterHandler} */
 const updatePost = (req, resp) => {
   resp.json({
     code: 0,
@@ -34,7 +31,13 @@ const updatePost = (req, resp) => {
   })
 }
 
-/** @type {import('express').IRouterHandler} */
+const getPost = (req, resp) => {
+  resp.json({
+    code: 0,
+    msg: "get post",
+  })
+}
+
 const deletePost = (req, resp) => {
   resp.json({
     code: 0,
@@ -45,6 +48,7 @@ const deletePost = (req, resp) => {
 module.exports = {
   getPosts: catchAsync(getPosts),
   createPost: catchAsync(createPost),
+  getPost: catchAsync(getPost),
   updatePost: catchAsync(updatePost),
   deletePost: catchAsync(deletePost),
 }

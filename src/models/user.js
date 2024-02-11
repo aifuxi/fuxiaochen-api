@@ -20,6 +20,10 @@ const userSchema = new mongoose.Schema(
       type: Date,
       default: null,
     },
+    token: {
+      type: String,
+      default: null,
+    },
   },
   {
     timestamps: true,
